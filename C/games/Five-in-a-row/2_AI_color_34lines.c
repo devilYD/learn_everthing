@@ -26,7 +26,7 @@ int main() {
 		SetConsoleCursorPosition(GetStdHandle((DWORD)-11), (COORD) { 0 });
 		for (i = W; i < S - W; ++i % W || _cprintf("%d\n", i / W - 1))
 			SetConsoleTextAttribute(GetStdHandle((DWORD)-11), i - z ? 15 : 175),
-			m[i] + 1 && printf(". \0â—‹\0â—" + m[i] * 3);
+			m[i] + 1 && printf(". \0â—‹\0â—?" + m[i] * 3);
 		for (i = 1, c - 81 || ++M; ++i < W;)_cprintf(" %c", 95 + i);
 		M %= 3, _cprintf("\n%s|", "PvP\0PvE\0EvE" + M * 4);
 		_cputs(r & 1 ? "White" : "Black"), r < 4 || _cputs(" win!");
@@ -34,6 +34,6 @@ int main() {
 }
 
 /*
-å½©è‰²ç‰ˆäº”å­æ£‹, 1649å­—ç¬¦, ç»™ç•Œé¢å¢žåŠ ä¸€äº›é¢œè‰²;
-äºŽ2020.9.4ä¸Šä¼ 
+²ÊÉ«°æÎå×ÓÆå, 1649×Ö·û, ¸ø½çÃæÔö¼ÓÒ»Ð©ÑÕÉ«;
+ÓÚ2020.9.4ÉÏ´«
 */
