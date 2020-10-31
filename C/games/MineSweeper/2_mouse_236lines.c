@@ -5,12 +5,12 @@
 #define Outside(x, y) (x < 0 || mapSize.X - 1 < x || y < 0 || mapSize.Y - 1 < y)
 int *map, *mark, count, bomb, firstOpen, game, bombCount, baginTime;
 int node[8][2] = { 1,0,-1,0,0,1,0,-1,-1,-1,-1,1,1,-1,1,1 };
-char *num[10] = { "  ", "â‘ ", "â‘¡", "â‘¢", "â‘£", "â‘¤", "â‘¥", "â‘¦", "â‘§", "â—" };
+char *num[10] = { "  ", "¢Ù", "¢Ú", "¢Û", "¢Ü", "¢İ", "¢Ş", "¢ß", "¢à", "¡ñ" };
 COORD size = { 18,11 }, origin = { 0,0 }, mapSize = { 0,0 }, pos = { 0,0 };
 HANDLE hOut, hIn;
 INPUT_RECORD Buf;
 int *color[10] = { 0,11,10,12,14,1,2,6,4,4 };
-//å…‰æ ‡å®šä½
+//¹â±ê¶¨Î»
 void gotoxy(int x,int y)
 {
 	COORD pos;
@@ -18,7 +18,7 @@ void gotoxy(int x,int y)
 	pos.Y = y;
 	SetConsoleCursorPosition(hOut, pos);
 }
-//è®¾ç½®çª—å£å¤§å°
+//ÉèÖÃ´°¿Ú´óĞ¡
 void setScreenSize(int lines, int cols)
 {
 	COORD size = { lines,cols };
@@ -27,7 +27,7 @@ void setScreenSize(int lines, int cols)
 	SetConsoleScreenBufferSize(hOut, size);
 	SetConsoleWindowInfo(hOut, 1, &rect);
 }
-//éšè—å…‰æ ‡
+//Òş²Ø¹â±ê
 void hideCursor()
 {
 	CONSOLE_CURSOR_INFO CursorInfo;
@@ -35,7 +35,7 @@ void hideCursor()
 	CursorInfo.bVisible = 0;
 	SetConsoleCursorInfo(hOut, &CursorInfo);
 }
-//ç²¾å‡†å»¶æ—¶
+//¾«×¼ÑÓÊ±
 void delay(int ms)
 {
 	static clock_t oldtime = 0;
@@ -43,7 +43,7 @@ void delay(int ms)
 		Sleep(1);
 	oldtime = clock();
 }
-//ç¿»å¼€ä¸€ä¸ªä½ç½®
+//·­¿ªÒ»¸öÎ»ÖÃ
 void open(int x,int y)
 {
 	if (Outside(x,y))return;
@@ -57,7 +57,7 @@ void open(int x,int y)
 	for (int i = 0; i < 8; i++)
 		open(x + node[i][0], y + node[i][1]);
 }
-//æ ‡è®°ä¸€ä¸ªä½ç½®
+//±ê¼ÇÒ»¸öÎ»ÖÃ
 void sign(int x, int y)
 {
 	if (Outside(x, y))return;
@@ -68,18 +68,18 @@ void sign(int x, int y)
 	{
 		*temp = 2;
 		SetConsoleTextAttribute(hOut, 4);
-		printf("â˜…");
+		printf("¡ï");
 		bombCount--;
 	}
 	else
 	{
 		*temp = 1;
 		SetConsoleTextAttribute(hOut, 15);
-		printf("â– ");
+		printf("¡ö");
 		bombCount++;
 	}
 }
-//è®¾ç½®ç‚¸å¼¹
+//ÉèÖÃÕ¨µ¯
 void setBomb(int x, int y)
 {
 	for (int i = 0,j,k; i < bomb;)
@@ -95,7 +95,7 @@ void setBomb(int x, int y)
 		}
 	}
 }
-//å±•å¼€
+//Õ¹¿ª
 void fun(int x,int y)
 {
 	int num = 0;
@@ -167,7 +167,7 @@ restart:;
 	firstOpen = 1, game = 1, baginTime = clock();
 	SetConsoleTextAttribute(hOut, 15);
 	SetConsoleCursorPosition(hOut, origin);
-	for (i = 0; i < mapSize.X*mapSize.Y;i++)printf("â– ");
+	for (i = 0; i < mapSize.X*mapSize.Y;i++)printf("¡ö");
 	for (i = 0; i < mapSize.X*mapSize.Y; i++)mark[i] = 1;
 	gotoxy(mapSize.X * 2 - 7, mapSize.Y);
 	printf("restart");
@@ -213,7 +213,7 @@ restart:;
 				if (map[i] == 9 && mark[i])
 				{
 					gotoxy(i%mapSize.X * 2, i / mapSize.X);
-					printf("â—");
+					printf("¡ñ");
 				}
 			break;
 		}
@@ -236,11 +236,11 @@ restart:;
 }
 
 /*
-236è¡Œæ‰«é›·, 6528å­—ç¬¦(åŒ…æ‹¬æ³¨é‡Š), å‡ ä¹è¿˜åŸäº†æ‰«é›·å…¨éƒ¨åŠŸèƒ½;
-äº¤äº’æ›´åŠ å‹å¥½: é¼ æ ‡å·¦é”®ç‚¹å‡», å³é”®æ ‡è®°, ä¸­é”®å±•å¼€(ä¸å¥½æè¿°...)
-å¢åŠ ä¸€ä¸ªéš¾åº¦é€‰æ‹©çš„ä¸»èœå•, å¯è‡ªå®šä¹‰éš¾åº¦
-ç•Œé¢æ›´åŠ ç›´è§‚, æœ‰å‰©ä½™é›·æ•°å’Œç”¨æ—¶æ˜¾ç¤º
-æ¸¸æˆæ—¶å¢åŠ äº†é‡ç½®å’Œè¿”å›èœå•çš„é€‰é¡¹
-æ„Ÿè§‰200å¤šè¡Œæœ‰ç‚¹ä¸¢äºº...winAPIéƒ½è¿™ä¹ˆé•¿å®åœ¨æ²¡åŠæ³•, æ²¡å¿ƒæ€å»å‹(é›¾)
-äº2020.2.15ä¸Šä¼ , 2020.10.3è¡¥å……è¯´æ˜å¹¶åˆ é™¤éƒ¨åˆ†ä»£ç 
+236ĞĞÉ¨À×, 6528×Ö·û(°üÀ¨×¢ÊÍ), ¼¸ºõ»¹Ô­ÁËÉ¨À×È«²¿¹¦ÄÜ;
+½»»¥¸ü¼ÓÓÑºÃ: Êó±ê×ó¼üµã»÷, ÓÒ¼ü±ê¼Ç, ÖĞ¼üÕ¹¿ª(²»ºÃÃèÊö...)
+Ôö¼ÓÒ»¸öÄÑ¶ÈÑ¡ÔñµÄÖ÷²Ëµ¥, ¿É×Ô¶¨ÒåÄÑ¶È
+½çÃæ¸ü¼ÓÖ±¹Û, ÓĞÊ£ÓàÀ×ÊıºÍÓÃÊ±ÏÔÊ¾
+ÓÎÏ·Ê±Ôö¼ÓÁËÖØÖÃºÍ·µ»Ø²Ëµ¥µÄÑ¡Ïî
+¸Ğ¾õ200¶àĞĞÓĞµã¶ªÈË...winAPI¶¼ÕâÃ´³¤ÊµÔÚÃ»°ì·¨, Ã»ĞÄË¼È¥Ñ¹(Îí)
+ÓÚ2020.2.15ÉÏ´«, 2020.10.3²¹³äËµÃ÷²¢É¾³ı²¿·Ö´úÂë
 */
