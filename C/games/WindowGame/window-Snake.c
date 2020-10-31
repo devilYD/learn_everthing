@@ -3,11 +3,11 @@
 #include <conio.h>
 #include <time.h>
 #define windowWidth 120
-#define windowHeight windowWidth //å•ä¸ªçª—å£é•¿å’Œå®½
+#define windowHeight windowWidth //µ¥¸ö´°¿Ú³¤ºÍ¿í
 #define mapLines (GetSystemMetrics(SM_CYSCREEN) / windowWidth)
-#define mapCols (GetSystemMetrics(SM_CXSCREEN) / windowHeight) //åœ°å›¾è¡Œæ•°å’Œåˆ—æ•°
-#define mapMax (mapLines * mapCols)//åœ°å›¾æ€»å…±çš„æ ¼å­æ•°
-#define Delay 100 //å»¶è¿Ÿ
+#define mapCols (GetSystemMetrics(SM_CXSCREEN) / windowHeight) //µØÍ¼ĞĞÊıºÍÁĞÊı
+#define mapMax (mapLines * mapCols)//µØÍ¼×Ü¹²µÄ¸ñ×ÓÊı
+#define Delay 100 //ÑÓ³Ù
 #if (windowWidth < 120)
 #define WindowStyle WS_POPUP
 #else
@@ -19,12 +19,12 @@ HANDLE hOut;
 COORD origin = { 0, 0 };
 HWND *screen;
 MSG msg;
-//ä¿¡æ¯å¾ªç¯
+//ĞÅÏ¢Ñ­»·
 LRESULT CALLBACK WndProc(HWND window, unsigned int msg, WPARAM wp, LPARAM lp)
 {
 	return DefWindowProc(window, msg, wp, lp);
 }
-//æ³¨å†Œçª—å£
+//×¢²á´°¿Ú
 ATOM MyRegisterClass()
 {
 	WNDCLASSEX wc;
@@ -42,15 +42,15 @@ ATOM MyRegisterClass()
 	wc.hIconSm = LoadIcon(0, IDI_APPLICATION);
 	return RegisterClassEx(&wc);
 }
-//åˆ›å»ºçª—å£
+//´´½¨´°¿Ú
 HWND addWindow(int x, int y, int width, int height)
 {
 	HWND window = CreateWindowEx(0, myclass, "title", WindowStyle ,
-		x, y, width, height, 0, 0, GetModuleHandle(0), 0);//åˆ›å»ºçª—å£
-	if (!window)return 0;//çª—å£æ˜¯å¦æˆåŠŸåˆ›å»º
+		x, y, width, height, 0, 0, GetModuleHandle(0), 0);//´´½¨´°¿Ú
+	if (!window)return 0;//´°¿ÚÊÇ·ñ³É¹¦´´½¨
 	return window;
 }
-//è®¾ç½®æ§åˆ¶å°å¤§å°
+//ÉèÖÃ¿ØÖÆÌ¨´óĞ¡
 void setConsoleSize(int lines, int cols)
 {
 	COORD size = { lines,cols };
@@ -59,7 +59,7 @@ void setConsoleSize(int lines, int cols)
 	SetConsoleScreenBufferSize(hOut, size);
 	SetConsoleWindowInfo(hOut, 1, &rect);
 }
-//éšè—å…‰æ ‡
+//Òş²Ø¹â±ê
 void hideCursor()
 {
 	CONSOLE_CURSOR_INFO CursorInfo;
@@ -70,14 +70,14 @@ void hideCursor()
 
 int main()
 {
-	srand((unsigned)time(0)); //åˆå§‹åŒ–éšæœºæ•°ç§å­
-	if (!MyRegisterClass())return GetLastError();//æ³¨å†Œçª—å£
+	srand((unsigned)time(0)); //³õÊ¼»¯Ëæ»úÊıÖÖ×Ó
+	if (!MyRegisterClass())return GetLastError();//×¢²á´°¿Ú
 	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	setConsoleSize(mapCols * 2, mapLines + 1);
 	hideCursor();
 	map = (int*)malloc(mapMax * sizeof(int));
-	screen = (HWND*)malloc(mapMax * sizeof(HWND)); //åˆ†é…
-	for (i = 0; i < mapMax; i++) //åˆå§‹åŒ–
+	screen = (HWND*)malloc(mapMax * sizeof(HWND)); //·ÖÅä
+	for (i = 0; i < mapMax; i++) //³õÊ¼»¯
 	{
 		map[i] = 0;
 		screen[i] = addWindow(i % mapCols * windowWidth, i / mapCols * windowHeight, windowWidth, windowHeight);
@@ -87,10 +87,10 @@ int main()
 		if (_kbhit())
 		{
 			cl = _getch();
-			if (cl == ' ')break; //ç©ºæ ¼ç›´æ¥ç»“æŸ
+			if (cl == ' ')break; //¿Õ¸ñÖ±½Ó½áÊø
 			switch (cl)
 			{
-			case 'a':case 'A':if (c != 'd')c = 'a'; break;//åˆ¤æ–­ä¸åŸæ–¹å‘æ˜¯å¦å†²çª
+			case 'a':case 'A':if (c != 'd')c = 'a'; break;//ÅĞ¶ÏÓëÔ­·½ÏòÊÇ·ñ³åÍ»
 			case 'd':case 'D':if (c != 'a')c = 'd'; break;
 			case 's':case 'S':if (c != 'w')c = 's'; break;
 			case 'w':case 'W':if (c != 's')c = 'w'; break;
@@ -98,27 +98,27 @@ int main()
 		}
 		switch (c)
 		{
-		case 'a':hX -= hX > 0 ? 1 : 1 - mapCols; break;//å¦‚æœè¶Šç•Œ,åˆ™ä»ç›¸å¯¹çš„å¢™å‡ºæ¥
+		case 'a':hX -= hX > 0 ? 1 : 1 - mapCols; break;//Èç¹ûÔ½½ç,Ôò´ÓÏà¶ÔµÄÇ½³öÀ´
 		case 'w':hY -= hY > 0 ? 1 : 1 - mapLines; break;
 		case 'd':hX += hX < mapCols - 1 ? 1 : 1 - mapCols; break;
 		case 's':hY += hY < mapLines - 1 ? 1 : 1 - mapLines; break;
 		}
-		if (map[hY * mapCols + hX] > 1) break; //ç¢°åˆ°è›‡èº«ï¼Œç›´æ¥ç»“æŸ
-		if (map[hY * mapCols + hX] == -1) //ç¢°åˆ°é£Ÿç‰©
+		if (map[hY * mapCols + hX] > 1) break; //Åöµ½ÉßÉí£¬Ö±½Ó½áÊø
+		if (map[hY * mapCols + hX] == -1) //Åöµ½Ê³Îï
 		{
 			len++;
 			do i = rand() % mapMax;
-			while (map[i]); //ç›´åˆ°æŒ‡å®šä½ç½®ä¸ºç©ºåœ°
+			while (map[i]); //Ö±µ½Ö¸¶¨Î»ÖÃÎª¿ÕµØ
 			map[i] = -1;
 		}
-		else //ç©ºåœ°
+		else //¿ÕµØ
 			for (i = 0; i < mapMax; i++)
-				if (map[i] > 0)map[i]--;//å…¨ä½“è›‡èº«å€¼-1
+				if (map[i] > 0)map[i]--;//È«ÌåÉßÉíÖµ-1
 		map[hY * mapCols + hX] = len;
 		SetConsoleCursorPosition(hOut, origin);
 		for (i = 0; i < mapMax; i++)
 		{
-			printf(map[i] > 0 ? "â– " : map[i] ? "â—" : "  ");
+			printf(map[i] > 0 ? "¡ö" : map[i] ? "¡ñ" : "  ");
 			if (map[i])ShowWindow(screen[i], SW_SHOWDEFAULT);
 			else ShowWindow(screen[i], SW_HIDE);
 		}
