@@ -3,7 +3,7 @@
 
 int main()
 {
-    int m, n, fenpei ,yuxia ;
+    int m, n, fenpei, yuxia;
 
     scanf("%d %d", &m, &n);
     fenpei = m / n;
