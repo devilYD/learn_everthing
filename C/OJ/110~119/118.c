@@ -1,39 +1,39 @@
-#include<stdio.h>
+#include <stdio.h>
 
-int insert(int a[],int n,int num);
+int insert(int a[], int n, int num);
 void PrintArr(int a[], int n);
 
 int main(void)
 {
-    int a[1000],num,n;
+    int a[1000], num, n;
 
-    scanf("%d",&n);
+    scanf("%d", &n);
     for (int i = 0; i < n; i++)
     {
-        scanf("%d",&a[i]);
+        scanf("%d", &a[i]);
     }
-    scanf("%d",&num);
+    scanf("%d", &num);
 
-    insert(a,n,num);
-    PrintArr(a,n+1);
+    insert(a, n, num);
+    PrintArr(a, n + 1);
 
     return 0;
 }
 
-int insert(int a[],int n,int num)
+int insert(int a[], int n, int num)
 {
-    int set=num;
+    int set = num;
     int i;
     for (i = 0; i < n; i++)
     {
-        if (a[i]>=num)
+        if (a[i] >= num)
             break;
     }
-    for (int t = i; t < n+1; t++)
+    for (int t = i; t < n + 1; t++)
     {
-        num=a[t];
-        a[t]=set;
-        set=num;
+        num = a[t];
+        a[t] = set;
+        set = num;
     }
     return 0;
 }
@@ -41,7 +41,7 @@ void PrintArr(int a[], int n)
 {
     for (int i = 0; i < n; i++)
     {
-        printf(" %d"+!i,a[i]);
+        printf(" %d" + !i, a[i]);
     }
 }
 
