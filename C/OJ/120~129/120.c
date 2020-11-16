@@ -1,31 +1,31 @@
-#include<stdio.h>
-int l2l(int m,int n);
+#include <stdio.h>
+int l2l(int m, int n);
 
 int main(void)
 {
-    int N,m,n;
-    int time=0;
+    int N, m, n;
+    int time = 0;
 
-    scanf("%d",&N);
-    m=0;
+    scanf("%d", &N);
+    m = 0;
     for (size_t i = 0; i < N; i++)
     {
-        scanf("%d",&n);
-        time=time+l2l(m,n);
-        m=n;
+        scanf("%d", &n);
+        time = time + l2l(m, n);
+        m = n;
     }
-    printf("%d",time);
+    printf("%d", time);
     return 0;
 }
 
-int l2l(int m,int n)
+int l2l(int m, int n)
 {
-    if (m==n)
+    if (m == n)
         return 5;
-    else if (m>n)
-        return 4+l2l(m-1,n);
-    else if (m<n)
-        return 6+l2l(m+1,n);
+    else if (m > n)
+        return 4 + l2l(m - 1, n);
+    else if (m < n)
+        return 6 + l2l(m + 1, n);
 }
 
 /* 
