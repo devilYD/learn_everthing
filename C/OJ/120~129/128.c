@@ -1,53 +1,53 @@
-#include<stdio.h>
-int scangroup(double a[][1000],int m,int n);
-int printgroup(double a[],int n);
-double Average(double a[][1000],int m,int n);
+#include <stdio.h>
+int scangroup(double a[][1000], int m, int n);
+int printgroup(double a[], int n);
+double Average(double a[][1000], int m, int n);
 
 int main(void)
 {
-    int m,n;
-    double a[1000][1000]={0},ans[1000]={0};
+    int m, n;
+    double a[1000][1000] = {0}, ans[1000] = {0};
 
-    scanf("%d %d",&m,&n);
-    scangroup(a,m,n);
+    scanf("%d %d", &m, &n);
+    scangroup(a, m, n);
 
     for (int i = 0; i < n; i++)
     {
-        ans[i]=Average(a,m,i);
+        ans[i] = Average(a, m, i);
     }
-    
-    printgroup(ans,n);
+
+    printgroup(ans, n);
 
     return 0;
 }
 
-int scangroup(double a[][1000],int m,int n)
+int scangroup(double a[][1000], int m, int n)
 {
     for (int i = 0; i < m; i++)
     {
         for (int t = 0; t < n; t++)
         {
-            scanf("%lf",&a[i][t]);
+            scanf("%lf", &a[i][t]);
         }
     }
     return 0;
 }
-int printgroup(double a[],int n)
+int printgroup(double a[], int n)
 {
     for (int i = 0; i < n; i++)
     {
-        printf(" %.2lf"+!i,a[i]);
+        printf(" %.2lf" + !i, a[i]);
     }
     return 0;
 }
-double Average(double a[][1000],int m,int n)
+double Average(double a[][1000], int m, int n)
 {
-    double sum=0;
+    double sum = 0;
     for (int i = 0; i < m; i++)
     {
-        sum=sum+a[i][n];
+        sum = sum + a[i][n];
     }
-    sum=sum/m;
+    sum = sum / m;
     return sum;
 }
 

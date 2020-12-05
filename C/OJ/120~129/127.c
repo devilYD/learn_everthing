@@ -1,58 +1,58 @@
-#include<stdio.h>
-int Multiplication(int a[][1000],int b[][1000],int p,int t,int s);
-int scangroup(int a[][1000],int m,int n);
-int printgroup(int a[][1000],int n,int m);
+#include <stdio.h>
+int Multiplication(int a[][1000], int b[][1000], int p, int t, int s);
+int scangroup(int a[][1000], int m, int n);
+int printgroup(int a[][1000], int n, int m);
 
 int main(void)
 {
-    int m,p,n;
-    int a[1000][1000]={0},b[1000][1000]={0};
-    int ans[1000][1000]={0};
+    int m, p, n;
+    int a[1000][1000] = {0}, b[1000][1000] = {0};
+    int ans[1000][1000] = {0};
 
-    scanf("%d %d %d",&m,&p,&n);
-    scangroup(a,m,p);
-    scangroup(b,p,n);
+    scanf("%d %d %d", &m, &p, &n);
+    scangroup(a, m, p);
+    scangroup(b, p, n);
 
     for (int i = 0; i < m; i++)
     {
         for (int t = 0; t < n; t++)
         {
-            ans[i][t]=Multiplication(a,b,p,i,t);
+            ans[i][t] = Multiplication(a, b, p, i, t);
         }
     }
 
-    printgroup(ans,m,n);
-    
+    printgroup(ans, m, n);
+
     return 0;
 }
 
-int Multiplication(int a[][1000],int b[][1000],int p,int t,int s)
+int Multiplication(int a[][1000], int b[][1000], int p, int t, int s)
 {
-    int sum=0;
+    int sum = 0;
     for (int i = 0; i < p; i++)
     {
-        sum=sum+a[t][i]*b[i][s];
+        sum = sum + a[t][i] * b[i][s];
     }
     return sum;
 }
-int scangroup(int a[][1000],int m,int n)
+int scangroup(int a[][1000], int m, int n)
 {
     for (int i = 0; i < m; i++)
     {
         for (int t = 0; t < n; t++)
         {
-            scanf("%d",&a[i][t]);
+            scanf("%d", &a[i][t]);
         }
     }
     return 0;
 }
-int printgroup(int a[][1000],int n,int m)
+int printgroup(int a[][1000], int n, int m)
 {
     for (int i = 0; i < n; i++)
     {
         for (int t = 0; t < m; t++)
         {
-            printf(" %d"+!t,a[i][t]);
+            printf(" %d" + !t, a[i][t]);
         }
         printf("\n");
     }
