@@ -15,9 +15,10 @@ Position Find(ElementType X, List L);           //查找对应结点
 void Delete(ElementType X, List L);             //删除对应结点
 Position FindPrevious(ElementType X, List L);   //查找结点的直接前驱
 void Insert(ElementType X, List L, Position P); //在P处插入X
-void DeleteList(List L);                        //释放内存
+void DeleteList(List L);                        //释放内存#
 Position Header();                              //创建头结点#
 Position First(List L);                         //返回链表的第一个元素#
+void ClearList(List L);                         //清空链表
 Position Advance(Position P);                   //
 ElementType Retrieve(Position P);               //
 
@@ -100,4 +101,20 @@ void DeleteList(List L)
         p = rem;
     }
     free(L);
+}
+
+/* 
+    定义清空链表的函数
+*/
+Position Advance(Position P)
+{
+    position P,tem;
+    
+    P = L->Next;
+    while(P != NULL)
+    {
+        tem = P->Next;
+        free(P);
+        p = rem;
+    }
 }
