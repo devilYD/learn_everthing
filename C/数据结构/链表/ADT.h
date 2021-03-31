@@ -12,8 +12,8 @@ List MakeEmpty();                               //创建一个空表#
 int isEmpty(List L);                            //查询是否为空表#
 int isLast(Position P, List L);                 //查询结点是否为链表结尾#
 Position Find(ElementType X, List L);           //查找对应结点#
-void Delete(ElementType X, List L);             //删除对应结点
-Position FindPrevious(ElementType X, List L);   //查找结点的直接前驱
+void Delete(ElementType X, List L);             //删除对应结点#
+Position FindPrevious(ElementType X, List L);   //查找结点的直接前驱#
 void Insert(ElementType X, List L, Position P); //在P处插入X
 void DeleteList(List L);                        //释放内存#
 Position Header();                              //创建头结点#
@@ -124,4 +124,43 @@ Position Find(ElementType X, List L)
     }
 
     return P;
+}
+
+/* 
+    定义查找结点的直接前驱函数
+*/
+Position FindPrevious(ElementType X, List L)
+{
+    Position P = L->Next;
+    Position P_Last;
+
+    while (P != NULL && P->Element != X)
+    {
+        P_Last = P;
+        P = P->Next;
+    }
+
+    if (P == NULL)
+    {
+        return NULL;
+    }
+    else
+    {
+        return P_Last;
+    }
+}
+
+/* 
+    定义删除函数
+*/
+void Delete(ElementType X, List L)
+{
+    Position P_Last = FindPrevious(X,L);
+    Position P = Find(X,L);
+
+    if (P_Last != NULL)
+    {
+        P_Last->Next = P->Next;
+        free(P);
+    } 
 }
