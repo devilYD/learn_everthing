@@ -1,30 +1,30 @@
 #include <stdlib.h>
-typedef int ElementType; //±íÖÐËù´¢´æµÄÔªËØÀàÐÍ
+typedef int ElementType; //è¡¨ä¸­æ‰€å‚¨å­˜çš„å…ƒç´ ç±»åž‹
 
 #ifndef _List_H
 
-struct Node;                    //½áµã
-typedef struct Node *PtrToNode; //½áµãÖ¸Õë
-typedef PtrToNode List;         //±í
-typedef PtrToNode Position;     //Î»ÖÃ
+struct Node;                    //ç»“ç‚¹
+typedef struct Node *PtrToNode; //ç»“ç‚¹æŒ‡é’ˆ
+typedef PtrToNode List;         //è¡¨
+typedef PtrToNode Position;     //ä½ç½®
 
-List MakeEmpty();                               //´´½¨Ò»¸ö¿Õ±í#
-int isEmpty(List L);                            //²éÑ¯ÊÇ·ñÎª¿Õ±í#
-int isLast(Position P, List L);                 //²éÑ¯½áµãÊÇ·ñÎªÁ´±í½áÎ²#
-Position Find(ElementType X, List L);           //²éÕÒ¶ÔÓ¦½áµã
-void Delete(ElementType X, List L);             //É¾³ý¶ÔÓ¦½áµã
-Position FindPrevious(ElementType X, List L);   //²éÕÒ½áµãµÄÖ±½ÓÇ°Çý
-void Insert(ElementType X, List L, Position P); //ÔÚP´¦²åÈëX
-void DeleteList(List L);                        //ÊÍ·ÅÄÚ´æ
-Position Header();                              //´´½¨Í·½áµã#
-Position First(List L);                         //·µ»ØÁ´±íµÄµÚÒ»¸öÔªËØ#
+List MakeEmpty();                               //åˆ›å»ºä¸€ä¸ªç©ºè¡¨#
+int isEmpty(List L);                            //æŸ¥è¯¢æ˜¯å¦ä¸ºç©ºè¡¨#
+int isLast(Position P, List L);                 //æŸ¥è¯¢ç»“ç‚¹æ˜¯å¦ä¸ºé“¾è¡¨ç»“å°¾#
+Position Find(ElementType X, List L);           //æŸ¥æ‰¾å¯¹åº”ç»“ç‚¹
+void Delete(ElementType X, List L);             //åˆ é™¤å¯¹åº”ç»“ç‚¹
+Position FindPrevious(ElementType X, List L);   //æŸ¥æ‰¾ç»“ç‚¹çš„ç›´æŽ¥å‰é©±
+void Insert(ElementType X, List L, Position P); //åœ¨På¤„æ’å…¥X
+void DeleteList(List L);                        //é‡Šæ”¾å†…å­˜
+Position Header();                              //åˆ›å»ºå¤´ç»“ç‚¹#
+Position First(List L);                         //è¿”å›žé“¾è¡¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ #
 Position Advance(Position P);                   //
 ElementType Retrieve(Position P);               //
 
 #endif /* _List_H */
 
 /* 
-    ¶¨Òå½áµã½á¹¹Ìå 
+    å®šä¹‰ç»“ç‚¹ç»“æž„ä½“ 
 */
 struct Node
 {
@@ -33,9 +33,9 @@ struct Node
 };
 
 /* 
-    ¶¨ÒåÁ½¸ö²éÑ¯ÓÃº¯Êý 
-    Èç¹ûÎªÕæ·µ»Ø1
-    ·ñÔò·µ»Ø0
+    å®šä¹‰ä¸¤ä¸ªæŸ¥è¯¢ç”¨å‡½æ•° 
+    å¦‚æžœä¸ºçœŸè¿”å›ž1
+    å¦åˆ™è¿”å›ž0
 */
 int isEmpty(List L)
 {
@@ -47,7 +47,7 @@ int isLast(Position P, List L)
 }
 
 /* 
-    ¶¨ÒåÈçºÎ´´½¨Í·½áµã
+    å®šä¹‰å¦‚ä½•åˆ›å»ºå¤´ç»“ç‚¹
 */
 Position Header()
 {
@@ -58,7 +58,7 @@ Position Header()
 }
 
 /* 
-    ¶¨Òå¹¹Ôìº¯Êý
+    å®šä¹‰æž„é€ å‡½æ•°
 */
 List MakeEmpty()
 {
@@ -67,7 +67,7 @@ List MakeEmpty()
 }
 
 /* 
-    ¶¨Òå²éÑ¯×îºóÒ»¸ö½áµãµÄº¯Êý
+    å®šä¹‰æŸ¥è¯¢æœ€åŽä¸€ä¸ªç»“ç‚¹çš„å‡½æ•°
 */
 Position First(List L)
 {
@@ -83,4 +83,21 @@ Position First(List L)
         P = P->Next;
     }
     return P;
+}
+
+/* 
+    å®šä¹‰é“¾è¡¨åˆ é™¤å‡½æ•°
+*/
+void DeleteList(List L)
+{
+    position P,tem;
+    
+    P = L->Next;
+    while(P != NULL)
+    {
+        tem = P->Next;
+        free(P);
+        p = rem;
+    }
+    free(L);
 }
