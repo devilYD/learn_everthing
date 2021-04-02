@@ -164,3 +164,16 @@ void Delete(ElementType X, List L)
         free(P);
     } 
 }
+
+/* 
+    定义插入函数
+*/
+void Insert(ElementType X, List L, Position P)
+{
+    Position T = FindPrevious(P->Element,L);
+
+    Position O = (struct Node *)malloc(sizeof(struct Node));
+    O->Element = X;
+    O->Next = P;
+    T->Next = O;
+}
