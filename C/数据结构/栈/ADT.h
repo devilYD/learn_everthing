@@ -4,14 +4,14 @@ typedef int ElementType;                    //栈中所储存的元素类型
 
 #ifndef _Stack_h
 
-struct Node;                                //栈的实现
-typedef struct Node *PtrToNode;             //
-typedef PtrToNode Stack;                    //位置
+struct Node;                                //栈的实现#
+typedef struct Node *PtrToNode;             //#
+typedef PtrToNode Stack;                    //位置#
 
-int IsEmpty( Stack S );                     //判断栈是否为空
-Stack CreateStack( void );                  //创建一个空栈
+int IsEmpty( Stack S );                     //判断栈是否为空#
+Stack CreateStack( void );                  //创建一个空栈#
 void DisposeStack( Stack S );               //
-void MakeEmpty( Stack S );                  //清空栈
+void MakeEmpty( Stack S );                  //清空栈#
 void Push( ElementType X , Stack S );       //入栈
 ElementType Top( Stack S );                 //创建头结点
 void Pop( Stack S );                        //出栈
