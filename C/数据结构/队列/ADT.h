@@ -1,4 +1,5 @@
 /* 此为队列的数组实现 */
+#include <stdlib.h>
 typedef int ElementType;//定义存储的元素类型
 
 #ifndef _Queue_h
@@ -34,7 +35,16 @@ int isEmpty( Queue Q )
 
 int isFull( Queue Q )
 {
-    int x = sizeof(Q->Array)/sizeof(ElementType);
+    int x = sizeof( Q->Array ) / sizeof( ElementType );
     return Q->Size == x;
 }
 
+Queue CreateQueue( int MaxElements )
+{
+    Queue Q = ( struct QueueRecord * ) malloc( sizeof ( struct QueueRecord ) );
+    Q->Array = ( ElementType * ) malloc( sizeof(ElementType) * MaxElements );
+    Q->Front = 1;
+    Q->Size = 0;
+    Q->Rear = 0;
+    return Q;
+}
