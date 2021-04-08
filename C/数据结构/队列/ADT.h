@@ -13,9 +13,9 @@ Queue CreateQueue(int MaxElements);   //创建一个最多可容量MaxElements个Element的
 void DisposeQueue(Queue Q);           //销毁队列#
 void MakeEmpty(Queue Q);              //清空队列#
 void EnQueue(ElementType X, Queue Q); //入队操作#
-ElementType Front(Queue Q);           //返回队头元素
-void Dequeue(Queue Q);                //出队操作
-ElementType FrontAndDequeue(Queue Q); //返回队头元素并出队
+ElementType Front(Queue Q);           //返回队头元素#
+void Dequeue(Queue Q);                //出队操作#
+ElementType FrontAndDequeue(Queue Q); //返回队头元素并出队#
 
 #endif /* _Queue_h */
 
@@ -77,4 +77,32 @@ void EnQueue(ElementType X, Queue Q)
         Q->Rear = Succ(Q->Rear, Q);
         Q->Array[Q->Rear] = X;
     }
+}
+
+ElementType Front(Queue Q)
+{
+    return Q->Array[Q->Front];
+}
+
+static int unSucc(int Value,Queue Q)
+{
+    if (--Value == -1)
+        Value = Q->Capacity-1;
+    return Value;
+}
+
+void Dequeue(Queue Q)
+{
+    if (!isEmpty(Q))
+    {
+        Q->Size--;
+        Q->Front = unSucc(Q->Front,Q);
+    }
+}
+
+ElementType FrontAndDequeue(Queue Q)
+{
+    ElementType X = Front(Q);
+    Dequeue(Q);
+    return X;
 }
