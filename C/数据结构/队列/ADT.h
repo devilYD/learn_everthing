@@ -6,8 +6,8 @@ typedef int ElementType;//定义存储的元素类型
 struct QueueRecord;
 typedef struct QueueRecord *Queue;
 
-int isEmpty( Queue Q );//查询是否为空
-int isFull( Queue Q );//查询是否为满
+int isEmpty( Queue Q );//查询是否为空#
+int isFull( Queue Q );//查询是否为满#
 Queue CreateQueue( int MaxElements );//创建一个最多可容量MaxElements个Element的队列
 void DisposeQueue( Queue Q );//销毁队列
 void MakeEmpty( Queue Q );//清空队列
@@ -26,4 +26,15 @@ struct QueueRecord
     int Size;
     ElementType *Array;
 };
+
+int isEmpty( Queue Q )
+{
+    return Q->Size == 0;
+}
+
+int isFull( Queue Q )
+{
+    int x = sizeof(Q->Array)/sizeof(ElementType);
+    return Q->Size == x;
+}
 
