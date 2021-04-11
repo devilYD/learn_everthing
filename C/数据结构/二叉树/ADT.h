@@ -16,3 +16,10 @@ SearchTree Delete( ElementType X,SearchTree T);//É¾³ý
 ElementType Retrieve(Position P);//¼ìË÷
 
 #endif /* _Tree_H */
+
+struct TreeNode
+{
+    ElementType Element;
+    SearchTree Left;
+    SearchTree right;
+};
