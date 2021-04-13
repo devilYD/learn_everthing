@@ -7,7 +7,7 @@ struct TreeNode;
 typedef struct TreeNode *Position;
 typedef struct TreeNode *SearchTree;
 
-SearchTree MakeEmpty( SearchTree T );//清空树
+SearchTree MakeEmpty( SearchTree T );//清空树#
 Position Find( ElementType X, SearchTree T);//查找
 Position FindMin( SearchTree T);//查找最小
 Position FindMax( SearchTree T);//查找最大
@@ -23,4 +23,18 @@ struct TreeNode
     SearchTree Left;
     SearchTree right;
 };
+
+SearchTree MakeEmpty( SearchTree T )
+{
+    Position P = T;
+
+    if (P != NULL)
+    {
+        MakeEmpty(P->Left);
+        MakeEmpty(P->right);
+        free(P);
+    }
+
+    return NULL;
+}
 
