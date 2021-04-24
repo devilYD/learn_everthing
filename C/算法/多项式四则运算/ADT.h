@@ -1,5 +1,10 @@
 #include <stdlib.h>
-typedef int ElementType; //表中所储存的元素类型
+struct Polynomial
+{
+    double Constant;
+    double Variable;
+};
+typedef Polynomial *ElementType; //表中所储存的元素类型
 
 #ifndef _List_H
 
@@ -21,6 +26,14 @@ Position First(List L);                         //返回链表的第一个元素#
 void ClearList(List L);                         //清空链表#
 
 #endif /* _List_H */
+
+int Equal(ElementType A,ElementType B)
+{
+    if (A->Constant == B->Constant && A->Variable == B->Variable)
+        return 1;
+    else 
+        return 0;
+}
 
 /* 
     定义结点结构体 
@@ -56,18 +69,12 @@ Position Header()
     return P;
 }
 
-/* 
-    定义构造函数
-*/
 List MakeEmpty()
 {
     List L = Header();
     return L;
 }
 
-/* 
-    定义查询最后一个结点的函数
-*/
 Position First(List L)
 {
     Position P = L;
@@ -84,9 +91,6 @@ Position First(List L)
     return P;
 }
 
-/* 
-    定义清空链表的函数
-*/
 void ClearList(List L)
 {
     Position P, tem;
@@ -95,28 +99,23 @@ void ClearList(List L)
     while (P != NULL)
     {
         tem = P->Next;
+        free(P->Element);
         free(P);
         P = tem;
     }
 }
 
-/* 
-    定义链表删除函数
-*/
 void DeleteList(List L)
 {
     ClearList(L);
     free(L);
 }
 
-/* 
-    定义查找函数
-*/
 Position Find(ElementType X, List L)
 {
     Position P = L->Next;
 
-    while (P != NULL && P->Element != X)
+    while (P != NULL && !Equal(X,P->Element))
     {
         P = P->Next;
     }
@@ -124,15 +123,12 @@ Position Find(ElementType X, List L)
     return P;
 }
 
-/* 
-    定义查找结点的直接前驱函数
-*/
 Position FindPrevious(ElementType X, List L)
 {
     Position P = L->Next;
     Position P_Last;
 
-    while (P != NULL && P->Element != X)
+    while (P != NULL && !Equal(X,P->Element))
     {
         P_Last = P;
         P = P->Next;
@@ -148,9 +144,6 @@ Position FindPrevious(ElementType X, List L)
     }
 }
 
-/* 
-    定义删除函数
-*/
 void Delete(ElementType X, List L)
 {
     Position P_Last = FindPrevious(X,L);
@@ -163,9 +156,6 @@ void Delete(ElementType X, List L)
     } 
 }
 
-/* 
-    定义插入函数
-*/
 void Insert(ElementType X, List L, Position P)
 {
     Position T = FindPrevious(P->Element,L);
@@ -174,4 +164,9 @@ void Insert(ElementType X, List L, Position P)
     O->Element = X;
     O->Next = P;
     T->Next = O;
+}
+
+List Add(List A,List B)
+{
+    List L = MakeEmpty();
 }
