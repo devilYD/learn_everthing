@@ -35,6 +35,14 @@ int Equal(ElementType A,ElementType B)
         return 0;
 }
 
+int Equal_V(ElementType A,ElementType B)
+{
+    if (A->Variable == B->Variable)
+        return 1;
+    else 
+        return 0;
+}
+
 /* 
     定义结点结构体 
 */
@@ -164,6 +172,14 @@ void Insert(ElementType X, List L, Position P)
     O->Element = X;
     O->Next = P;
     T->Next = O;
+}
+
+void Rebuild(List A)
+{
+    List L = MakeEmpty();
+    Position P = A->Next;
+    
+
 }
 
 List Add(List A,List B)
