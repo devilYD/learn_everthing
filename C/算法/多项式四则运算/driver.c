@@ -15,6 +15,7 @@ int main(void)
     printf("2.减法运算\n");
     printf("3.乘法运算\n");
     scanf("%d", &i);
+    printf("%d",i);
     if (i == 1)
         Output_L(Add(A, B));
     else if (i == 2)
@@ -33,7 +34,6 @@ List Input_L()
     double a,b;
     printf("请输入多项式的项数:");
     scanf("%d", &i);
-    printf("%d",i);
     for (int t = 0; t < i; t++)
     {
         P->Next = New_P();
