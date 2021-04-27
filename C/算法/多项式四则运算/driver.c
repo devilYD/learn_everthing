@@ -7,7 +7,7 @@ void Output_L(List L);
 int main(void)
 {
     int i = 0;
-    List A, B;
+    List A, B,Answer;
     A = Input_L();
     B = Input_L();
     printf("请选择计算模式:\n");
@@ -17,11 +17,12 @@ int main(void)
     scanf("%d", &i);
     printf("%d",i);
     if (i == 1)
-        Output_L(Add(A, B));
+        Answer = Add(A, B);
     else if (i == 2)
-        Output_L(Sub(A, B));
+        Answer = Sub(A, B);
     else if (i == 3)
-        Output_L(Mult(A, B));
+        Answer = Mult(A, B);
+    Output_L(Answer);
     DeleteList(A);
     DeleteList(B);
 }

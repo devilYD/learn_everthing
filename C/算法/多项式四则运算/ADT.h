@@ -197,7 +197,7 @@ Position Copy_P(Position P)
     return Po;
 }
 
-void Rebuild(List A)
+List Rebuild(List A)
 {
     List L = MakeEmpty();
     Position P = A->Next;
@@ -216,8 +216,9 @@ void Rebuild(List A)
         P = P->Next;
     }
     ClearList(A);
+    free(A->Element);
     free(A);
-    A = L;
+    return L;
 }
 
 List Add(List A, List B)
@@ -238,8 +239,7 @@ List Add(List A, List B)
         Pb = Pb->Next;
         P = P->Next;
     }
-    Rebuild(L);
-    return L;
+    return Rebuild(L);
 }
 
 List Sub(List A, List B)
@@ -279,6 +279,5 @@ List Mult(List A, List B)
         Pa = Pa->Next;
         Pb = B->Next;
     }
-    Rebuild(L);
-    return L;
+    return Rebuild(L);
 }
