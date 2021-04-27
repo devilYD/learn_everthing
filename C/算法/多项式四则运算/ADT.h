@@ -1,17 +1,14 @@
 #include <stdlib.h>
-struct Polynomial
-{
-    double Constant;
-    double Variable;
-};
-typedef Polynomial *ElementType; //表中所储存的元素类型
 
 #ifndef _List_H
 
+struct Polynomial;
 struct Node;                    //结点
 typedef struct Node *PtrToNode; //结点指针
 typedef PtrToNode List;         //表
 typedef PtrToNode Position;     //位置
+typedef struct Polynomial *Pol; //表中所储存的元素类型
+typedef Pol ElementType;
 
 List MakeEmpty();                               //创建一个空表#
 int isEmpty(List L);                            //查询是否为空表#
@@ -27,19 +24,25 @@ void ClearList(List L);                         //清空链表#
 
 #endif /* _List_H */
 
-int Equal(ElementType A,ElementType B)
+struct Polynomial
+{
+    double Constant;
+    double Variable;
+};
+
+int Equal(ElementType A, ElementType B)
 {
     if (A->Constant == B->Constant && A->Variable == B->Variable)
         return 1;
-    else 
+    else
         return 0;
 }
 
-int Equal_V(ElementType A,ElementType B)
+int Equal_V(ElementType A, ElementType B)
 {
     if (A->Variable == B->Variable)
         return 1;
-    else 
+    else
         return 0;
 }
 
@@ -123,7 +126,7 @@ Position Find(ElementType X, List L)
 {
     Position P = L->Next;
 
-    while (P != NULL && !Equal(X,P->Element))
+    while (P != NULL && !Equal(X, P->Element))
     {
         P = P->Next;
     }
@@ -136,7 +139,7 @@ Position FindPrevious(ElementType X, List L)
     Position P = L->Next;
     Position P_Last;
 
-    while (P != NULL && !Equal(X,P->Element))
+    while (P != NULL && !Equal(X, P->Element))
     {
         P_Last = P;
         P = P->Next;
@@ -154,19 +157,19 @@ Position FindPrevious(ElementType X, List L)
 
 void Delete(ElementType X, List L)
 {
-    Position P_Last = FindPrevious(X,L);
-    Position P = Find(X,L);
+    Position P_Last = FindPrevious(X, L);
+    Position P = Find(X, L);
 
     if (P_Last != NULL)
     {
         P_Last->Next = P->Next;
         free(P);
-    } 
+    }
 }
 
 void Insert(ElementType X, List L, Position P)
 {
-    Position T = FindPrevious(P->Element,L);
+    Position T = FindPrevious(P->Element, L);
 
     Position O = (struct Node *)malloc(sizeof(struct Node));
     O->Element = X;
@@ -174,15 +177,108 @@ void Insert(ElementType X, List L, Position P)
     T->Next = O;
 }
 
+Position New_P()
+{
+    Position P = (struct Node *)malloc(sizeof(struct Node));
+    ElementType Element = (struct Polynomial *)malloc(sizeof(struct Polynomial));
+    P->Element = Element;
+    P->Next = NULL;
+    return P;
+}
+
+Position Copy_P(Position P)
+{
+    Position Po = (struct Node *)malloc(sizeof(struct Node));
+    ElementType Element = (struct Polynomial *)malloc(sizeof(struct Polynomial));
+    Element->Constant = P->Element->Constant;
+    Element->Variable = P->Element->Variable;
+    Po->Element = Element;
+    Po->Next = NULL;
+    return Po;
+}
+
 void Rebuild(List A)
 {
     List L = MakeEmpty();
     Position P = A->Next;
-    
-
+    Position Pn = L;
+    while (P != NULL)
+    {
+        while (Pn->Next != NULL && !Equal_V(P->Element, Pn->Element))
+        {
+            Pn = Pn->Next;
+        }
+        if (Pn->Next == NULL)
+            Pn->Next = Copy_P(P);
+        else
+            Pn->Element->Constant += P->Element->Constant;
+        Pn = L;
+        P = P->Next;
+    }
+    ClearList(A);
+    free(A);
+    A = L;
 }
 
-List Add(List A,List B)
+List Add(List A, List B)
 {
     List L = MakeEmpty();
+    Position Pa = A->Next;
+    Position Pb = B->Next;
+    Position P = L;
+    while (Pa != NULL)
+    {
+        P->Next = Copy_P(Pa);
+        Pa = Pa->Next;
+        P = P->Next;
+    }
+    while (Pb != NULL)
+    {
+        P->Next = Copy_P(Pb);
+        Pb = Pb->Next;
+        P = P->Next;
+    }
+    Rebuild(L);
+    return L;
+}
+
+List Sub(List A, List B)
+{
+    Position P = B->Next;
+    while (P != NULL)
+    {
+        P->Element->Constant = 0 - P->Element->Constant;
+        P = P->Next;
+    }
+    List L = Add(A, B);
+    P = B->Next;
+    while (P != NULL)
+    {
+        P->Element->Constant = 0 - P->Element->Constant;
+        P = P->Next;
+    }
+    return L;
+}
+
+List Mult(List A, List B)
+{
+    List L = MakeEmpty();
+    Position Pl = L;
+    Position Pa = A->Next;
+    Position Pb = B->Next;
+    while (Pa != NULL)
+    {
+        while (Pb != NULL)
+        {
+            Pl->Next = New_P();
+            Pl->Element->Constant = Pl->Element->Constant * Pb->Element->Constant;
+            Pl->Element->Variable = Pl->Element->Variable + Pb->Element->Variable;
+            Pl = Pl->Next;
+            Pb = Pb->Next;
+        }
+        Pa = Pa->Next;
+        Pb = B->Next;
+    }
+    Rebuild(L);
+    return L;
 }
