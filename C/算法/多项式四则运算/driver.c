@@ -9,9 +9,7 @@ int main(void)
     int i = 0;
     List A, B;
     A = Input_L();
-    Output_L(A);
     B = Input_L();
-    Output_L(B);
     printf("请选择计算模式:\n");
     printf("1.加法运算\n");
     printf("2.减法运算\n");
@@ -32,7 +30,7 @@ List Input_L()
     List L = MakeEmpty();
     Position P = L;
     int i;
-    float a,b;
+    double a,b;
     printf("请输入多项式的项数:");
     scanf("%d", &i);
     printf("%d",i);
