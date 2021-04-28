@@ -204,14 +204,14 @@ List Rebuild(List A)
     Position Pn = L;
     while (P != NULL)
     {
-        while (Pn->Next != NULL && !Equal_V(P->Element, Pn->Element))
+        while (Pn->Next != NULL && Pn->Next->Element->Variable != P->Element->Variable)
         {
             Pn = Pn->Next;
         }
         if (Pn->Next == NULL)
             Pn->Next = Copy_P(P);
         else
-            Pn->Element->Constant += P->Element->Constant;
+            Pn->Next->Element->Constant += P->Element->Constant;
         Pn = L;
         P = P->Next;
     }
