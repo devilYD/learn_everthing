@@ -1,13 +1,13 @@
 #include "ADT.h"
 #include <stdio.h>
 
-List Input_L();
-void Output_L(List L);
+List Input_L();        //从键盘输入一个多项式并构建链表
+void Output_L(List L); //把一个链表输出到显示屏
 
 int main(void)
 {
     int i = 0;
-    List A, B,Answer;
+    List A, B, Answer;
     A = Input_L();
     B = Input_L();
     printf("请选择计算模式:\n");
@@ -15,7 +15,7 @@ int main(void)
     printf("2.减法运算\n");
     printf("3.乘法运算\n");
     scanf("%d", &i);
-    printf("%d",i);
+    printf("%d", i);
     if (i == 1)
         Answer = Add(A, B);
     else if (i == 2)
@@ -32,7 +32,7 @@ List Input_L()
     List L = MakeEmpty();
     Position P = L;
     int i;
-    double a,b;
+    double a, b;
     printf("请输入多项式的项数:");
     scanf("%d", &i);
     for (int t = 0; t < i; t++)
