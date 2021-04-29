@@ -2,13 +2,13 @@
 
 #ifndef _List_H
 
-struct Polynomial;
+struct Polynomial;              //储存元素结构体
 struct Node;                    //结点
 typedef struct Node *PtrToNode; //结点指针
 typedef PtrToNode List;         //表
 typedef PtrToNode Position;     //位置
-typedef struct Polynomial *Pol; //表中所储存的元素类型
-typedef Pol ElementType;
+typedef struct Polynomial *Pol; //表中所储存的结构体的指针
+typedef Pol ElementType;        //表中所储存的元素类型
 
 List MakeEmpty();                               //创建一个空表#
 int isEmpty(List L);                            //查询是否为空表#
@@ -21,6 +21,12 @@ void DeleteList(List L);                        //释放内存#
 Position Header();                              //创建头结点#
 Position First(List L);                         //返回链表的第一个元素#
 void ClearList(List L);                         //清空链表#
+Position New_P();                               //新建一个空节点#
+Position Copy_P(Position P);                    //复制一个节点#
+List Rebuild(List A);                           //重构单链表（合并同类项）#
+List Add(List A, List B);                       //将两个链表相加（原链表不变）#
+List Sub(List A, List B);                       //将两个链表相减（原链表不变）#
+List Mult(List A, List B);                      //将两个链表相乘（原链表不变）#
 
 #endif /* _List_H */
 
