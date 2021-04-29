@@ -27,6 +27,8 @@ List Rebuild(List A);                           //重构单链表（合并同类项）#
 List Add(List A, List B);                       //将两个链表相加（原链表不变）#
 List Sub(List A, List B);                       //将两个链表相减（原链表不变）#
 List Mult(List A, List B);                      //将两个链表相乘（原链表不变）#
+List Input_L();                                 //从键盘输入一个多项式并构建链表
+void Output_L(List L);                          //把一个链表输出到显示屏
 
 #endif /* _List_H */
 
@@ -276,4 +278,40 @@ List Mult(List A, List B)
         Pb = B->Next;
     }
     return Rebuild(L);
+}
+
+List Input_L()
+{
+    List L = MakeEmpty();
+    Position P = L;
+    int i;
+    double a, b;
+    printf("请输入多项式的项数:");
+    scanf("%d", &i);
+    for (int t = 0; t < i; t++)
+    {
+        P->Next = New_P();
+        printf("请输入第%d项的常量:", t + 1);
+        scanf("%lf", &a);
+        P->Next->Element->Constant = a;
+        printf("请输入第%d项的幂次:", t + 1);
+        scanf("%lf", &b);
+        P->Next->Element->Variable = b;
+        P = P->Next;
+    }
+    return L;
+}
+
+void Output_L(List L)
+{
+    int i = 0;
+    Position P = L->Next;
+    printf("答案为:");
+    while (P != NULL)
+    {
+        printf("+ (%.2lf*N^%.0lf) " + !i, P->Element->Constant, P->Element->Variable);
+        P = P->Next;
+        i++;
+    }
+    printf("\n");
 }
