@@ -46,20 +46,12 @@ int Equal_V(ElementType A, ElementType B)
         return 0;
 }
 
-/* 
-    定义结点结构体 
-*/
 struct Node
 {
     ElementType Element;
     Position Next;
 };
 
-/* 
-    定义两个查询用函数 
-    如果为真返回1
-    否则返回0
-*/
 int isEmpty(List L)
 {
     return L->Next != NULL;
@@ -69,9 +61,6 @@ int isLast(Position P, List L)
     return P->Next == NULL;
 }
 
-/* 
-    定义如何创建头结点
-*/
 Position Header()
 {
     Position P = (struct Node *)malloc(sizeof(struct Node));
@@ -119,6 +108,7 @@ void ClearList(List L)
 void DeleteList(List L)
 {
     ClearList(L);
+    free(L->Element);
     free(L);
 }
 
