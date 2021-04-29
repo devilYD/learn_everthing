@@ -1,6 +1,7 @@
 #ifndef _List_H
 
 #include <stdlib.h>
+#include <stdio.h>
 
 struct Polynomial;              //储存元素结构体
 struct Node;                    //结点
