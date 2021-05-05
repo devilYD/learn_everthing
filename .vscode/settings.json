@@ -6,6 +6,7 @@
         "**/.factorypath": true
     },
     "files.associations": {
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "adt_list.h": "c"
     }
 }

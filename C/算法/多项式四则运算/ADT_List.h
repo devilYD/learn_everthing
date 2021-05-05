@@ -270,8 +270,8 @@ List Mult(List A, List B)
         while (Pb != NULL)
         {
             Pl->Next = New_P();
-            Pl->Element->Constant = Pl->Element->Constant * Pb->Element->Constant;
-            Pl->Element->Variable = Pl->Element->Variable + Pb->Element->Variable;
+            Pl->Next->Element->Constant = Pa->Element->Constant * Pb->Element->Constant;
+            Pl->Next->Element->Variable = Pa->Element->Variable + Pb->Element->Variable;
             Pl = Pl->Next;
             Pb = Pb->Next;
         }
