@@ -12,7 +12,6 @@ int main(void)
     printf("2.减法运算\n");
     printf("3.乘法运算\n");
     scanf("%d", &i);
-    printf("%d", i);
     if (i == 1)
         Answer = Add(A, B);
     else if (i == 2)
