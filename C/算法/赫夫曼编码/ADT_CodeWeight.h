@@ -14,7 +14,6 @@ List MakeEmpty();                               //创建一个空表#
 int isEmpty(List L);                            //查询是否为空表#
 int isLast(Position P, List L);                 //查询结点是否为链表结尾#
 Position Find(char X, List L);                  //查找对应结点#
-void Delete(char X, List L);                    //删除对应结点#
 void DeleteList(List L);                        //释放内存#
 Position Header();                              //创建头结点#
 void ClearList(List L);                         //清空链表#
@@ -88,16 +87,4 @@ Position Find(char X, List L)
     }
 
     return P;
-}
-
-void Delete(char X, List L)
-{
-    Position P_Last = FindPrevious(X,L);
-    Position P = Find(X,L);
-
-    if (P_Last != NULL)
-    {
-        P_Last->Next = P->Next;
-        free(P);
-    } 
 }
