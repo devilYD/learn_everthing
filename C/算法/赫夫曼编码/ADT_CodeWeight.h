@@ -13,10 +13,8 @@ typedef PtrToNode Position;     //位置
 List MakeEmpty();                               //创建一个空表#
 int isEmpty(List L);                            //查询是否为空表#
 int isLast(Position P, List L);                 //查询结点是否为链表结尾#
-Position Find(ElementType X, List L);           //查找对应结点#
-void Delete(ElementType X, List L);             //删除对应结点#
-Position FindPrevious(ElementType X, List L);   //查找结点的直接前驱#
-void Insert(ElementType X, List L, Position P); //在P处插入X#
+Position Find(char X, List L);                  //查找对应结点#
+void Delete(char X, List L);                    //删除对应结点#
 void DeleteList(List L);                        //释放内存#
 Position Header();                              //创建头结点#
 void ClearList(List L);                         //清空链表#
@@ -80,11 +78,11 @@ void DeleteList(List L)
     free(L);
 }
 
-Position Find(ElementType X, List L)
+Position Find(char X, List L)
 {
     Position P = L->Next;
 
-    while (P != NULL && P->Element != X)
+    while (P != NULL && P->Element->Code != X)
     {
         P = P->Next;
     }
@@ -92,28 +90,7 @@ Position Find(ElementType X, List L)
     return P;
 }
 
-Position FindPrevious(ElementType X, List L)
-{
-    Position P = L->Next;
-    Position P_Last;
-
-    while (P != NULL && P->Element != X)
-    {
-        P_Last = P;
-        P = P->Next;
-    }
-
-    if (P == NULL)
-    {
-        return NULL;
-    }
-    else
-    {
-        return P_Last;
-    }
-}
-
-void Delete(ElementType X, List L)
+void Delete(char X, List L)
 {
     Position P_Last = FindPrevious(X,L);
     Position P = Find(X,L);
@@ -123,14 +100,4 @@ void Delete(ElementType X, List L)
         P_Last->Next = P->Next;
         free(P);
     } 
-}
-
-void Insert(ElementType X, List L, Position P)
-{
-    Position T = FindPrevious(P->Element,L);
-
-    Position O = (struct Node *)malloc(sizeof(struct Node));
-    O->Element = X;
-    O->Next = P;
-    T->Next = O;
 }
