@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <vector>
 #include <fstream>
-#include <Windows.h>
+
  
 using namespace std;
  
@@ -164,7 +164,7 @@ void ZipFile(HuffmanCode HC, vector<char> v, TNode N) {/*压缩文件*/
             outfile << HC[j + 1][k];
     }
     outfile.close();/*关闭文件*/
-    cout << "Zipping..."; Sleep(200); cout << "..."; Sleep(200); cout << "...";/*让用户等得一些时间*/
+    cout << "Zipping..."; cout << "..."; cout << "...";
     cout << "Finished! You can find your new file at E:\\Amusement\\ZipFile.txt" << endl;/*提示完成压缩*/
     system("pause");
 }
@@ -206,12 +206,12 @@ void RZipFile(HuffmanCode HC, TNode N) {/*解压文件*/
                         break;
                     }
                 }
-            }
+            }/*让用户等得一些时间*/
             if (flag == 1)
                 break;
         }
     }
-    cout << "RZipping..."; Sleep(200); cout << "..."; Sleep(200); cout << "...";/*让用户等得一些时间*/
+    cout << "RZipping...";  cout << "...";  cout << "...";
     cout << "Finished! You can find your new file at E:\\Amusement\\RZipFile.txt" << endl;/*提示完成解压缩*/
 }
  
