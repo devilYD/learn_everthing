@@ -5,8 +5,7 @@
 #include <vector>
 #include <fstream>
 
- 
-using namespace std;
+ using namespace std;
  
 /*-----主要数据类型与变量------*/
 typedef struct/*定义哈夫曼树的结构*/
@@ -243,11 +242,6 @@ void CompareFile(vector<char>& f, vector<char>& v) {
     cout << ">>请依次输入您的两个待比较文件" << endl;
     ReadFile(f);
     ReadFile(v);
-    //if (f.size() != v.size()) {
-    //    cout << "您所比较的两个文件不相同" << endl;
-    //    return;
-    //}
-    /*一直在想如何逐一比较vector里面的数据，后来查了博客才知道可以直接比较*/
     if (f == v)
         cout << "您所比较的两个文件相等" << endl;
     else
