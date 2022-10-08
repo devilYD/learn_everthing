@@ -3,17 +3,14 @@ package org.YD.utils;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import javax.sql.DataSource;
 import java.io.FileInputStream;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Properties;
 
 /*
  * Druid数据库连接池工具类
  */
 
-public class JBDCUtils {
+public class JDBCUtils {
     //定义成员变量ds
     private static DataSource ds;
 
@@ -23,7 +20,7 @@ public class JBDCUtils {
             Properties prop = new Properties();
             prop.load(new FileInputStream("src/main/resources/druid.properties"));
 
-            DataSource ds = DruidDataSourceFactory.createDataSource(prop);
+            ds = DruidDataSourceFactory.createDataSource(prop);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -35,10 +32,10 @@ public class JBDCUtils {
     }
 
     //释放资源
-    public static void close(Statement stmt, Connection conn){
-        if (stmt != null){
+    public static void close(PreparedStatement pstmt, Connection conn){
+        if (pstmt != null){
             try {
-                stmt.close();
+                pstmt.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -56,7 +53,7 @@ public class JBDCUtils {
     }
 
     //释放资源重载
-    public static void close(ResultSet rs, Statement stmt, Connection conn){
+    public static void close(ResultSet rs, PreparedStatement pstmt, Connection conn){
         if (rs != null){
             try {
                 rs.close();
@@ -65,9 +62,9 @@ public class JBDCUtils {
             }
         }
 
-        if (stmt != null){
+        if (pstmt != null){
             try {
-                stmt.close();
+                pstmt.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

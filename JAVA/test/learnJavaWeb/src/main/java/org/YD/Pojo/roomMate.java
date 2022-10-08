@@ -1,5 +1,6 @@
 package org.YD.Pojo;
 
+import org.YD.utils.JDBCUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,7 +41,8 @@ public class roomMate {
         this.age = age;
     }
 
-    public boolean Insert(Connection conn) throws SQLException {
+    public boolean Insert() throws SQLException {
+        Connection conn = JDBCUtils.getConnection();
         PreparedStatement pstmt0 = conn.prepareStatement("SELECT id FROM room WHERE id = ?");
         pstmt0.setInt(1,this.getId());
         ResultSet result0 = pstmt0.executeQuery();
@@ -62,5 +64,10 @@ public class roomMate {
             conn.close();
             return bl;
         }
+    }
+
+    public int Drop() throws Exception {
+        Connection conn0 = JDBCUtils.getConnection();
+        PreparedStatement pstmt = conn0.prepareStatement("DROP TABLE ");
     }
 }
