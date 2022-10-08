@@ -66,8 +66,12 @@ public class roomMate {
         }
     }
 
-    public int Drop() throws Exception {
+    public int Delete() throws Exception {
         Connection conn0 = JDBCUtils.getConnection();
-        PreparedStatement pstmt = conn0.prepareStatement("DROP TABLE ");
+        PreparedStatement pstmt = conn0.prepareStatement("DELETE FROM room WHERE name = ?");
+        pstmt.setString(1,this.name);
+        int num = pstmt.executeUpdate();
+        JDBCUtils.close(pstmt,conn0);
+        return num;
     }
 }
