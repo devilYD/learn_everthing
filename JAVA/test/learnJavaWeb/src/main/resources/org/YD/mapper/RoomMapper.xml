@@ -7,4 +7,7 @@
     <select id="selectRoomMate" resultType="org.YD.Pojo.roomMate">
         select * from room
     </select>
+    <select id="selectByName" parameterType="String" resultType="org.YD.Pojo.roomMate">
+        select * from room where name = #{name}
+    </select>
 </mapper>
