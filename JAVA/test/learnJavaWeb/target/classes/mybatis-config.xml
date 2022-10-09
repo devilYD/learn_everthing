@@ -139,6 +139,6 @@
     </environments>
     <mappers>
         <!-- 加载SQL的映射文件 -->
-        <mapper resource="RoomMapper.xml"/>
+        <package name="org.YD.mapper"/>
     </mappers>
 </configuration>

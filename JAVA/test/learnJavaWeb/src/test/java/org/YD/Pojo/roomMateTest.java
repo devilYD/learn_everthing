@@ -1,11 +1,13 @@
 package org.YD.Pojo;
 
+import org.YD.mapper.RoomMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -36,6 +38,20 @@ class roomMateTest {
         System.out.println(roomMates);
 
         sqlSession.close();
+    }
+
+    @Test
+    public void mapperDemo() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        RoomMapper roomMapper = sqlSession.getMapper(RoomMapper.class);
+
+
+        System.out.println(roomMapper.selectRoomMate());
+
     }
 
     @Test
