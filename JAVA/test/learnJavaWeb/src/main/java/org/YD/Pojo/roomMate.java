@@ -41,6 +41,15 @@ public class roomMate {
         this.age = age;
     }
 
+    @Override
+    public String toString() {
+        return "roomMate{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
     public boolean Insert() throws SQLException {
         Connection conn = JDBCUtils.getConnection();
         PreparedStatement pstmt0 = conn.prepareStatement("SELECT id FROM room WHERE id = ?");
