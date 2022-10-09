@@ -34,6 +34,8 @@ class roomMateTest {
         List<roomMate> roomMates = sqlSession.selectList("org.YD.Pojo.selectRoomMate");
 
         System.out.println(roomMates);
+
+        sqlSession.close();
     }
 
     @Test
