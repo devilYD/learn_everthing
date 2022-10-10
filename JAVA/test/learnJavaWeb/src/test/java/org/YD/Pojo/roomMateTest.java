@@ -51,6 +51,7 @@ class roomMateTest {
 
 
         System.out.println(roomMapper.selectRoomMate());
+        System.out.println(roomMapper.selectByName(""));
 
     }
 

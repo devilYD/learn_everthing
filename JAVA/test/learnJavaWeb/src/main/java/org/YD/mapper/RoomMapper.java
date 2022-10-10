@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface RoomMapper {
     public List<roomMate> selectRoomMate();
-    public List<roomMate> selectByName();
+    public List<roomMate> selectByName(String name);
 }
