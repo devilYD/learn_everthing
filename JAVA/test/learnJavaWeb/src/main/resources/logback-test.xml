@@ -3,7 +3,7 @@
 <!-- scan:当此属性设置为true时，配置文档如果发生改变，将会被重新加载，默认值为true -->
 <!-- scanPeriod:设置监测配置文档是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。 -->
 <!-- debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 -->
-<configuration scan="true" scanPeriod="10 seconds" debug="true">
+<configuration scan="true" scanPeriod="10 seconds" debug="false">
     <!-- 尽量别用绝对路径，如果带参数不同容器路径解释可能不同,以下配置参数在pom.xml里 -->
     <!-- 日志级别 -->
     <property name="log.root.level" value="info"/>

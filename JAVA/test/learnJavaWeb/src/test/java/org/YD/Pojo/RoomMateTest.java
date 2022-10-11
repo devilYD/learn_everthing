@@ -58,6 +58,19 @@ class RoomMateTest {
     }
 
     @Test
+    public void selectAllDemo() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        RoomMapper mapper = sqlSession.getMapper(RoomMapper.class);
+
+        System.out.println(mapper.selectAll());
+
+    }
+
+    @Test
     public void where(){
         System.out.println(System.getProperty("user.dir"));
     }
