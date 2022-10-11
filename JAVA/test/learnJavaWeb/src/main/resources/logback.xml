@@ -17,7 +17,7 @@
     <property name="log.max.size" value="500MB"/>
     <!-- 定义日志输出格式-->
     <property name="log.pattern"
-              value="%date{ISO8601} %-1level [%thread] %logger{56}.%method:%L -%msg%n"/>
+              value="%green(%date{yyyy-MM-dd HH:mm:ss.SSS}) %yellow(%-5level) [%thread] %logger{56}.%method:%L -%msg%n"/>
     <property name="log.charset" value="UTF-8"/>
 
     <!--控制台输出 -->

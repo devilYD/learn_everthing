@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-class roomMateTest {
+class RoomMateTest {
     @Test
     public void InsertDemo() throws Exception {
         roomMate rm = new roomMate(0,"王创",21);
@@ -26,14 +26,16 @@ class roomMateTest {
     }
 
     @Test
-    public void MybatisDemo() throws  Exception {
+    public void MybatisDemo() throws IOException {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        List<roomMate> roomMates = sqlSession.selectList("org.YD.Pojo.selectRoomMate");
+        RoomMapper mapper = sqlSession.getMapper(RoomMapper.class);
+
+        List<roomMate> roomMates = mapper.selectRoomMate();
 
         System.out.println(roomMates);
 
@@ -56,7 +58,7 @@ class roomMateTest {
     }
 
     @Test
-    public void where() throws Exception{
+    public void where(){
         System.out.println(System.getProperty("user.dir"));
     }
 }
