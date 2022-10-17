@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [17/Oct/2022:18:33:13 +0800] "GET / HTTP/1.1" 200 160 http-bio-80-exec-1 517
+0:0:0:0:0:0:0:1 - - [17/Oct/2022:18:33:13 +0800] "GET /css/index.css HTTP/1.1" 200 208 http-bio-80-exec-2 5
+0:0:0:0:0:0:0:1 - - [17/Oct/2022:18:33:13 +0800] "GET /image/before.jpg HTTP/1.1" 200 1193361 http-bio-80-exec-3 21
+0:0:0:0:0:0:0:1 - - [17/Oct/2022:18:33:13 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-80-exec-4 3

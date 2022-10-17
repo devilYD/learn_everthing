@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.YD.mapper.userMapper">
+    <select id="selectById" parameterType="int" resultType="org.YD.pojo.User">
+        SELECT * FROM user WHERE id = #{id};
+    </select>
+    <select id="selectByName" parameterType="String" resultType="org.YD.pojo.User">
+        SELECT * FROM user WHERE username = #{username}
+    </select>
+    <select id="login" parameterType="org.YD.pojo.User" resultType="org.YD.pojo.User">
+        SELECT id FROM user WHERE username = #{username} AND password = #{password};
+    </select>
+    <insert id="logon" parameterType="org.YD.pojo.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user(username,password) VALUE(#{username},#{password});
+    </insert>
+    <delete id="logout" parameterType="org.YD.pojo.User">
+        DELETE FROM user WHERE username = #{username} AND password = #{password};
+    </delete>
+</mapper>
