@@ -42,8 +42,8 @@ public class userMapperTest {
         userMapper usermapper =  sqlSession.getMapper(userMapper.class);
 
         User user = new User();
-        user.setUsername("devilyudun");
-        user.setPassword("123456");
+        user.setUsername("");
+        user.setPassword("");
 
         System.out.println(usermapper.login(user));
     }
