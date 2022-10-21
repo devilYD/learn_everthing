@@ -5,6 +5,7 @@ import org.YD.pojo.User;
 import org.YD.utils.MyBatisUtils;
 import org.apache.ibatis.session.SqlSession;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
@@ -15,15 +16,15 @@ import java.util.List;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
 
         userMapper usermapper = sqlSession.getMapper(userMapper.class);
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getHeader("username");
+        String password = request.getHeader("password");
 
         User user = new User();
         user.setUsername(username);
@@ -35,14 +36,14 @@ public class LoginServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
 
         if (log.isEmpty()) {
-            writer.write("登录失败");
+            writer.write("false");
         } else {
             writer.write("登录成功");
         }
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         this.doGet(request, response);
     }
 }
