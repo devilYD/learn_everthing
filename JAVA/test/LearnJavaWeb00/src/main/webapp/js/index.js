@@ -31,7 +31,6 @@ function login() {
 	xmlhttp.open("POST","/LoginServlet",true);
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
-	xmlhttp.setRequestHeader("username",username);
-	xmlhttp.setRequestHeader("password",password);
-	xmlhttp.send();
+	xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+	xmlhttp.send("username="+username+"&password="+password);
 }
