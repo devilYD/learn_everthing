@@ -1,5 +1,6 @@
 package org.YD.web;
 
+import com.alibaba.fastjson.JSON;
 import org.YD.mapper.userMapper;
 import org.YD.pojo.User;
 import org.YD.utils.MyBatisUtils;
@@ -8,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -23,14 +26,14 @@ public class LoginServlet extends HttpServlet {
 
         userMapper usermapper = sqlSession.getMapper(userMapper.class);
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        BufferedReader reader = request.getReader();
+        String json = reader.readLine();
 
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
+        User user = JSON.parseObject(json, User.class);
 
-        System.out.println(username+password);
+//        String username = user.getUsername();
+//        String password = user.getPassword();
+//        System.out.println(username+password);
 
         List<User> log = usermapper.login(user);
         PrintWriter writer = response.getWriter();
@@ -40,6 +43,7 @@ public class LoginServlet extends HttpServlet {
         } else {
             writer.write("登录成功");
         }
+        sqlSession.close();
     }
 
     @Override

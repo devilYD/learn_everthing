@@ -8,6 +8,7 @@
         主页
     </title>
 	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="js/index.js"></script>
 </head>
 <body>
