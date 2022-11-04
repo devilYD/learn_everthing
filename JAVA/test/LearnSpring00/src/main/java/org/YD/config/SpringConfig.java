@@ -3,6 +3,7 @@ package org.YD.config;
 import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @ComponentScan(value = "org.YD",
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
                 classes = Controller.class
         )
 )
+@EnableWebMvc
 @EnableAspectJAutoProxy
 @EnableTransactionManagement
 @PropertySource("classpath:druid.properties")

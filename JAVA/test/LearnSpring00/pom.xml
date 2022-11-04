@@ -92,6 +92,13 @@
             <version>4.0.1</version>
         </dependency>
 
+        <!--JSON解析-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.9</version>
+        </dependency>
+
     </dependencies>
 
     <build>
