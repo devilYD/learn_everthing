@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/DruidConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/DruidConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/MyBatisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/MyBatisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/ServletConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/ServletConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/SpringConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +69,7 @@
       <workItem from="1667459337867" duration="1875000" />
       <workItem from="1667546157581" duration="1424000" />
       <workItem from="1667555303389" duration="1864000" />
-      <workItem from="1667631776799" duration="671000" />
+      <workItem from="1667631776799" duration="2544000" />
     </task>
     <servers />
   </component>
