@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eaf458fe-c438-4157-9e1d-00e23d62de6e" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/DruidConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/DruidConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/MyBatisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/MyBatisConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/ServletConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/ServletConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/src/main/java/org/YD/config/SpringConfig.java" afterDir="false" />
-    </list>
+    <list default="true" id="eaf458fe-c438-4157-9e1d-00e23d62de6e" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,6 +64,7 @@
       <workItem from="1667546157581" duration="1424000" />
       <workItem from="1667555303389" duration="1864000" />
       <workItem from="1667631776799" duration="2544000" />
+      <workItem from="1667806290711" duration="13000" />
     </task>
     <servers />
   </component>
