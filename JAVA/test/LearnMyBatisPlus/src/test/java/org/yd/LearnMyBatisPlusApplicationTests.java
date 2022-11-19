@@ -18,6 +18,8 @@ class LearnMyBatisPlusApplicationTests {
     @Test
     void contextLoads() {
         QueryWrapper<User> wp = new QueryWrapper<>();
+        wp.lambda().select(User::getId,User::getUsername,User::getPassword);
+        wp.lambda().eq(User::getUsername,"admin").eq(User::getPassword,"123456");
         System.out.println(userDao.selectMaps(wp));
     }
 
