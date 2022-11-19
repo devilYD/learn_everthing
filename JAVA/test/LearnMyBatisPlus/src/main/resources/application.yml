@@ -5,3 +5,11 @@ spring:
     url: jdbc:mysql://localhost:3306/learn?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
     username: root
     password:
+  main:
+    banner-mode: off
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
