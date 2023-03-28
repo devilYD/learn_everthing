@@ -12,7 +12,7 @@
     <!-- 配置信息 -->
     <properties>
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/learn?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8&amp;useSSL=false"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/phonedb?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8&amp;useSSL=false"/>
         <property name="name" value="root"/>
         <property name="password" value=""/>
     </properties>

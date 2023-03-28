@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 
-    @RequestMapping("/test")
+    @RequestMapping("/login")
     @ResponseBody
     public String test() {
-        return "{'name':'王创'}";
+        return "login";
     }
 }

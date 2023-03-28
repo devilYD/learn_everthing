@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e13af453-f347-461e-9a3c-0fb6aa29f906" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/../LearnSpring00/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LearnSpring00/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LearnSpring00/src/main/java/org/YD/config/DruidConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LearnSpring00/src/main/java/org/YD/config/DruidConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LearnSpring00/src/main/java/org/YD/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LearnSpring00/src/main/java/org/YD/config/SpringConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LearnSpring00/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LearnSpring00/target/classes/org/YD/config/DruidConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LearnSpring00/target/classes/org/YD/config/DruidConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LearnSpring00/target/classes/org/YD/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LearnSpring00/target/classes/org/YD/config/SpringConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LearnSpring00/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../LearnSpring00/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LearnSpring00/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../LearnSpring00/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LearnSpring00/target/tomcat/work/Tomcat/localhost/_/SESSIONS.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LearnSpringMVC/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LearnSpringMVC/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LearnSpringMVC/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LearnSpringMVC/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +40,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/code/learn_everthing/JAVA/test/LearnSpringMVC",
-    "settings.editor.selected.configurable": "MavenSettings"
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
@@ -59,6 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667209057700</updated>
       <workItem from="1667209058918" duration="689000" />
+      <workItem from="1672212313503" duration="5000" />
     </task>
     <servers />
   </component>

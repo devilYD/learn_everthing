@@ -1,6 +1,6 @@
 package org.YD.mapper;
 
-import org.YD.pojo.User;
+import org.YD.pojo.Users;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -8,17 +8,11 @@ import java.util.List;
 public interface userMapper {
 
     @Mapper
-    public List<User> selectById(int id);
+    public List<Users> selectById(int id);
 
     @Mapper
-    public List<User> selectByName(String username);
+    public List<Users> selectByName(String username);
 
     @Mapper
-    public List<User> login(User user);
-
-    @Mapper
-    public void logon(User user);
-
-    @Mapper
-    public void logout(User user);
+    public List<Users> getAll();
 }
